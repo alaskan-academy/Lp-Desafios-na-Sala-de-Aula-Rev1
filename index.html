@@ -27,6 +27,17 @@
     --text-body:#292929;
     --red:#F72A2A;
     --yellow:#f9da1d;
+
+    /* type scale: clamp(min, fluid, max) so hierarchy stays consistent mobile -> desktop */
+    --fs-display:clamp(22px,4.8vw,32px);   /* hero headline */
+    --fs-h1:clamp(26px,4.8vw,34px);        /* section headings */
+    --fs-h2:clamp(22px,4vw,28px);          /* sub headings (cta-row, helena, module cards) */
+    --fs-h3:clamp(19px,3vw,23px);          /* feature/card titles */
+    --fs-lead:clamp(16.5px,2.3vw,19px);    /* intro / lead paragraphs */
+    --fs-body:16px;                        /* standard paragraph */
+    --fs-small:clamp(14.5px,2vw,16px);     /* checklist items, secondary text */
+    --fs-xs:13.5px;                        /* fine print */
+    --fs-price:clamp(52px,11vw,72px);      /* the big price number */
   }
   *{box-sizing:border-box;}
   html,body{overflow-x:hidden;margin:0;padding:0;}
@@ -57,9 +68,7 @@
   .purple-text{color:var(--purple);}
   .orange-text{color:var(--orange);}
 
-  .heading-lg{font-size:32px;font-weight:700;line-height:1.15;margin-bottom:6px;}
-  .heading-md{font-size:26px;font-weight:700;line-height:1.2;}
-  .badge-text{font-size:20px;font-weight:700;}
+  .heading-lg{font-size:var(--fs-h1);font-weight:700;line-height:1.15;margin-bottom:6px;}
 
   /* shape dividers */
   .shape-divider{position:absolute;left:0;bottom:100%;width:100%;overflow:hidden;line-height:0;pointer-events:none;}
@@ -78,7 +87,7 @@
     color:#fff;
     text-align:center;
     font-weight:600;
-    font-size:21px;
+    font-size:clamp(19px,3.6vw,26px);
     padding:14px 16px;
     border-radius:12px;
     margin-bottom:14px;
@@ -88,7 +97,7 @@
     text-align:center;
     font-weight:800;
     text-transform:uppercase;
-    font-size:24px;
+    font-size:var(--fs-display);
     line-height:1.2;
     margin-bottom:16px;
   }
@@ -99,7 +108,7 @@
   .hero-sub{
     text-align:center;
     font-weight:700;
-    font-size:18px;
+    font-size:var(--fs-lead);
     color:var(--text-dark);
   }
   .hero-sub span.ul{text-decoration:underline;}
@@ -107,22 +116,22 @@
   /* pain/solution section */
   .pain-icon{width:150px;margin:0 auto 12px;}
   @media(max-width:640px){ .pain-icon{width:130px;} }
-  .pain-title{color:#fff;font-weight:700;font-style:italic;font-size:20px;text-align:center;margin-bottom:10px;}
-  .pain-orange{color:var(--orange);font-weight:700;font-size:28px;text-align:center;margin-bottom:18px;}
-  .pain-text{color:#fff;text-align:center;font-size:16px;margin-bottom:30px;}
+  .pain-title{color:#fff;font-weight:700;font-style:italic;font-size:var(--fs-h3);text-align:center;margin-bottom:10px;}
+  .pain-orange{color:var(--orange);font-weight:700;font-size:var(--fs-h1);text-align:center;margin-bottom:18px;}
+  .pain-text{color:#fff;text-align:center;font-size:var(--fs-lead);margin-bottom:30px;}
   .pain-text u{text-decoration:underline;}
 
   /* checklists */
   .checklist{list-style:none;margin:0 0 16px;padding:0;}
-  .checklist li{display:flex;align-items:flex-start;gap:10px;padding:6px 4px;font-size:15px;text-align:left;}
+  .checklist li{display:flex;align-items:flex-start;gap:10px;padding:6px 4px;font-size:var(--fs-small);text-align:left;}
   .checklist.center li{justify-content:center;text-align:left;}
   .checklist i{margin-top:3px;flex-shrink:0;}
   .checklist.purple i{color:var(--purple);}
   .checklist.green i{color:#00B324;}
   .checklist.white{color:#fff;}
   .checklist.white i{color:var(--green-light);}
-  .checklist.card i{color:var(--purple);font-size:14px;}
-  .checklist.card li{font-size:14px;padding:5px 2px;}
+  .checklist.card i{color:var(--purple);}
+  .checklist.card li{font-size:clamp(13.5px,1.9vw,15px);padding:5px 2px;}
 
   .mockup-img{max-width:460px;margin:-30px auto 14px;}
 
@@ -130,8 +139,8 @@
   .grid-2x2{display:flex;flex-wrap:wrap;background:var(--bg-light);}
   .grid-2x2 .feat{width:50%;padding:20px 16px;text-align:center;}
   .grid-2x2 .feat img{width:44%;margin:0 auto 6px;}
-  .grid-2x2 .feat h3{color:var(--purple);font-weight:700;font-size:20px;margin-bottom:8px;}
-  .grid-2x2 .feat p{font-size:15px;color:var(--text-body);}
+  .grid-2x2 .feat h3{color:var(--purple);font-weight:700;font-size:var(--fs-h3);margin-bottom:8px;}
+  .grid-2x2 .feat p{font-size:var(--fs-small);color:var(--text-body);}
 
   /* testimonial carousel */
   .carousel{position:relative;max-width:520px;margin:0 auto;padding:30px 0;}
@@ -160,7 +169,7 @@
     background:#fff;
   }
   .module-card-inner img{border-radius:10px 10px 0 0;margin:-16px -14px 10px;width:calc(100% + 28px);max-width:none;}
-  .module-card-inner h3{font-family:'Montserrat',sans-serif;color:var(--purple);font-weight:700;font-size:22px;margin-bottom:10px;}
+  .module-card-inner h3{font-family:'Montserrat',sans-serif;color:var(--purple);font-weight:700;font-size:var(--fs-h2);margin-bottom:10px;line-height:1.15;}
 
   /* certificate section */
   .cert-img{max-width:640px;margin:10px auto -20px;}
@@ -170,8 +179,8 @@
   .helena-photo{flex:0 0 260px;max-width:260px;margin:0 auto;}
   .helena-photo img{border-radius:21px;}
   .helena-content{flex:1;min-width:260px;}
-  .helena-content h2{font-size:28px;font-weight:700;color:#fff;margin-bottom:10px;}
-  .helena-content p{color:#fff;font-size:16px;}
+  .helena-content h2{font-size:var(--fs-h1);font-weight:700;color:#fff;margin-bottom:10px;}
+  .helena-content p{color:#fff;font-size:var(--fs-small);}
   .helena-limits-img{max-width:340px;margin:10px auto 0;}
 
   /* guarantee */
@@ -180,10 +189,10 @@
   /* vagas limitadas */
   .vagas-badge{
     display:inline-block;background:var(--yellow);color:var(--text-dark);
-    font-weight:700;font-size:22px;padding:10px 22px;border-radius:8px;margin-bottom:16px;
+    font-weight:700;font-size:clamp(18px,3.6vw,24px);padding:10px 22px;border-radius:8px;margin-bottom:16px;
   }
   .vagas-img{max-width:220px;margin:0 auto 12px;}
-  .vagas-text{font-size:16px;text-align:center;}
+  .vagas-text{font-size:var(--fs-lead);text-align:center;}
   .vagas-text span{color:red;font-weight:700;}
 
   /* pricing box */
@@ -192,23 +201,23 @@
     border:5px solid #fff;border-radius:10px;padding:0 16px 32px;text-align:center;
   }
   .price-box-badge{
-    background:var(--red);color:#fff;font-weight:700;font-size:26px;
+    background:var(--red);color:#fff;font-weight:700;font-size:clamp(22px,4.2vw,28px);
     padding:16px;margin:0 -16px 16px;border-radius:5px 5px 0 0;
   }
   .price-mockup{max-width:340px;margin:0 auto 10px;}
   .price-old{
-    text-decoration:line-through;color:#353535;font-weight:700;font-size:22px;margin-top:14px;
+    text-decoration:line-through;color:#353535;font-weight:700;font-size:clamp(19px,3vw,23px);margin-top:14px;
   }
-  .price-by{color:#353535;font-size:19px;margin-top:2px;}
-  .price-big{color:var(--price);font-weight:700;font-size:54px;margin:2px 0;}
-  .price-cash{color:#353535;font-size:19px;margin-bottom:8px;}
-  .price-cta-note{color:#353535;font-weight:700;font-size:17px;margin-bottom:14px;}
+  .price-by{color:#353535;font-size:var(--fs-lead);margin-top:2px;}
+  .price-big{color:var(--price);font-weight:700;font-size:var(--fs-price);margin:2px 0;line-height:1.05;}
+  .price-cash{color:#353535;font-size:var(--fs-lead);margin-bottom:8px;}
+  .price-cta-note{color:#353535;font-weight:700;font-size:clamp(15px,2.4vw,18px);margin-bottom:14px;}
   .pay-methods-img{max-width:400px;margin:16px auto 0;}
 
   /* buttons */
   .btn-cta{
     display:inline-block;background:var(--cta);color:#fff;font-weight:700;
-    font-size:18px;padding:16px 28px;border-radius:8px;text-decoration:none;
+    font-size:clamp(16px,2.6vw,19px);padding:16px 28px;border-radius:8px;text-decoration:none;
     text-align:center;box-shadow:0 6px 0 #009e12;transition:transform .15s ease;
     max-width:420px;width:100%;
   }
@@ -218,52 +227,43 @@
 
   .btn-whatsapp{
     display:inline-flex;align-items:center;gap:10px;background:#12EE30;color:#0c3d13;
-    font-weight:700;font-size:17px;padding:14px 26px;border-radius:8px;text-decoration:none;
+    font-weight:700;font-size:clamp(15.5px,2.4vw,18px);padding:14px 26px;border-radius:8px;text-decoration:none;
   }
 
   /* mid CTA sections */
   .cta-row{display:flex;flex-wrap:wrap;align-items:center;gap:20px;padding:0 16px;}
   .cta-row .col{flex:1;min-width:260px;max-width:400px;margin:0 auto;}
-  .cta-row h2{color:#fff;font-size:26px;font-weight:700;margin-bottom:12px;}
-  .cta-row p{color:#fff;font-size:15px;}
+  .cta-row h2{color:#fff;font-size:var(--fs-h2);font-weight:700;margin-bottom:12px;}
+  .cta-row p{color:#fff;font-size:var(--fs-small);}
   .cta-row img{border-radius:21px;margin-bottom:14px;}
 
   /* faq */
-  .faq-title{color:#fff;font-weight:800;text-transform:uppercase;font-size:30px;text-align:center;margin-bottom:20px;letter-spacing:.5px;}
+  .faq-title{color:#fff;font-weight:800;text-transform:uppercase;font-size:var(--fs-h1);text-align:center;margin-bottom:20px;letter-spacing:.5px;}
   .faq-item{border-top:3px solid var(--orange);}
   .faq-item:first-child{border-top:none;}
   .faq-q{
     width:100%;background:none;border:none;text-align:left;color:var(--orange);
-    font-weight:800;text-transform:uppercase;font-size:16px;padding:20px 30px 20px 0;
-    position:relative;cursor:pointer;font-family:'Poppins',sans-serif;
+    font-weight:800;text-transform:uppercase;font-size:clamp(15px,2.4vw,18px);padding:20px 30px 20px 0;
+    position:relative;cursor:pointer;font-family:'Poppins',sans-serif;line-height:1.3;
   }
   .faq-q i{position:absolute;right:0;top:50%;transform:translateY(-50%);}
   .faq-a{max-height:0;overflow:hidden;transition:max-height .25s ease;}
-  .faq-a-inner{color:#CFCFCF;font-size:16px;padding-bottom:20px;line-height:1.3;}
+  .faq-a-inner{color:#CFCFCF;font-size:var(--fs-small);padding-bottom:20px;line-height:1.4;}
   .faq-item.open .faq-a{max-height:400px;}
 
   /* footer */
-  .footer{padding:24px 16px;text-align:center;font-size:14px;color:#666;}
+  .footer{padding:24px 16px;text-align:center;font-size:var(--fs-xs);color:#666;}
 
   /* generic image widths seen in JSON */
   .w-icon{max-width:100px;margin:0 auto;}
   .w-professor{max-width:420px;margin:10px auto;}
   .w-graph{max-width:520px;margin:20px auto;}
 
-  @media(min-width:640px){
-    .hero-badge{font-size:26px;}
-    .hero-headline{font-size:30px;}
-    .hero-sub{font-size:21px;}
-    .heading-lg{font-size:32px;}
-    .price-big{font-size:66px;}
-  }
-
   @media(max-width:640px){
     .grid-2x2 .feat{width:100%;}
     .module-card{width:100%;}
     .helena-row{flex-direction:column;text-align:center;}
     .cta-row{flex-direction:column;}
-    .price-box-badge{font-size:22px;}
   }
 </style>
 </head>
@@ -306,7 +306,7 @@
 
     <h2 class="heading-lg purple-text" style="margin-top:20px;">Você vai aprender a aplicar o &ldquo;Circuito da Calma&rdquo; do Método SER</h2>
     <img class="mockup-img" src="https://serhenaeducacao.com/wp-content/uploads/2025/07/Mockups-Workshop-pv1.webp" alt="Mockup do Workshop">
-    <p style="font-size:16px;color:var(--text-body);max-width:640px;margin:0 auto 14px;">Um conjunto de frases, atitudes e rotinas testadas em mais de <u>3.000 professores</u> para fazer os alunos cooperarem naturalmente <strong>(mesmo nas turmas mais desafiadoras da Educação Infantil e do Ensino Fundamental).</strong></p>
+    <p style="font-size:var(--fs-lead);color:var(--text-body);max-width:640px;margin:0 auto 14px;">Um conjunto de frases, atitudes e rotinas testadas em mais de <u>3.000 professores</u> para fazer os alunos cooperarem naturalmente <strong>(mesmo nas turmas mais desafiadoras da Educação Infantil e do Ensino Fundamental).</strong></p>
     <ul class="checklist green center" style="display:inline-block;text-align:left;">
       <li><i class="fa-solid fa-circle-check"></i>Serve para qualquer idade e experiência</li>
       <li><i class="fa-solid fa-circle-check"></i>Tudo já mastigado: é só seguir e aplicar</li>
@@ -365,7 +365,7 @@
   <div class="shape-divider curve"><svg viewBox="0 0 500 40" preserveAspectRatio="none"><path d="M0,40 C125,0 375,0 500,40 L500,40 L0,40 Z" fill="var(--purple)"></path></svg></div>
   <div class="container text-center" style="margin-bottom:20px;">
     <h2 class="heading-lg purple-text">Veja o que você vai receber:</h2>
-    <p style="font-weight:700;color:#4E4E4E;font-size:18px;"><u><strong>Mais de 90 AULAS</strong></u><br>E mais de 13 arquivos digitais para te ajudar na sala de aula</p>
+    <p style="font-weight:700;color:#4E4E4E;font-size:var(--fs-h3);"><u><strong>Mais de 90 AULAS</strong></u><br>E mais de 13 arquivos digitais para te ajudar na sala de aula</p>
   </div>
 
   <div class="modules-grid container">
@@ -545,7 +545,7 @@
   <div class="container text-center">
     <img class="shield-img" src="https://serhenaeducacao.com/wp-content/uploads/2025/02/AnyConv.com__shield-1.webp" alt="Garantia">
     <h2 class="heading-lg white">Garantia Incondicional de 30 dias</h2>
-    <p class="white" style="max-width:600px;margin:10px auto 0;font-size:16px;">Caso você não goste do evento ou ache que não é para você, basta solicitar o reembolso com o suporte que vamos te enviar o procedimento necessário para devolução do seu dinheiro.<br><em><strong>Você não corre risco algum.</strong></em></p>
+    <p class="white" style="max-width:600px;margin:10px auto 0;font-size:var(--fs-lead);">Caso você não goste do evento ou ache que não é para você, basta solicitar o reembolso com o suporte que vamos te enviar o procedimento necessário para devolução do seu dinheiro.<br><em><strong>Você não corre risco algum.</strong></em></p>
   </div>
 </section>
 
@@ -629,9 +629,9 @@
   <div class="container text-center">
     <h2 class="heading-lg orange-text">Serve para Qualquer Idade e Experiência</h2>
     <img class="w-professor" src="https://serhenaeducacao.com/wp-content/uploads/2025/02/professor-1.webp" alt="">
-    <p style="font-size:16px;color:var(--text-body);max-width:640px;margin:0 auto;"><strong>Não importa se você é um professor novato ou veterano, ou se ensina crianças ou adultos.</strong> Este workshop foi projetado para funcionar em qualquer contexto educacional (vai funcionar melhor para a infância). Mas os fundamentos que você aprenderá são universais e se aplicam a todas as idades e níveis de experiência.</p>
+    <p style="font-size:var(--fs-lead);color:var(--text-body);max-width:640px;margin:0 auto;"><strong>Não importa se você é um professor novato ou veterano, ou se ensina crianças ou adultos.</strong> Este workshop foi projetado para funcionar em qualquer contexto educacional (vai funcionar melhor para a infância). Mas os fundamentos que você aprenderá são universais e se aplicam a todas as idades e níveis de experiência.</p>
     <img class="w-graph" src="https://serhenaeducacao.com/wp-content/uploads/2025/02/grafico-professor-1.webp" alt="">
-    <p style="font-size:16px;color:var(--text-body);max-width:640px;margin:0 auto 18px;"><strong>Está preocupado se isso vai funcionar para você?</strong><br>Os resultados falam por si – professores de todos os tipos têm transformado suas salas de aula, reduzido o estresse e aumentado sua renda mensal. Esta é a oportunidade perfeita para ver mudanças reais e palpáveis em sua carreira.</p>
+    <p style="font-size:var(--fs-lead);color:var(--text-body);max-width:640px;margin:0 auto 18px;"><strong>Está preocupado se isso vai funcionar para você?</strong><br>Os resultados falam por si – professores de todos os tipos têm transformado suas salas de aula, reduzido o estresse e aumentado sua renda mensal. Esta é a oportunidade perfeita para ver mudanças reais e palpáveis em sua carreira.</p>
     <div class="btn-wrap">
       <a class="btn-cta" href="https://checkout.payt.com.br/10e9e8ecf127f740f1c2a99e3ef4433c">QUERO TER UMA SALA DE AULA SEM ESTRESSE</a>
     </div>
@@ -703,7 +703,7 @@
   <div class="shape-divider wave"><svg viewBox="0 0 500 40" preserveAspectRatio="none"><path d="M0,40 C100,10 150,30 250,18 C350,6 400,26 500,12 L500,40 L0,40 Z" fill="var(--purple)"></path></svg></div>
   <div class="container text-center">
     <h2 class="heading-lg orange-text">Ainda está com dúvidas?</h2>
-    <p style="color:var(--text-body);font-size:16px;margin-bottom:18px;">Converse com o suporte no WhatsApp!</p>
+    <p style="color:var(--text-body);font-size:var(--fs-lead);margin-bottom:18px;">Converse com o suporte no WhatsApp!</p>
     <a class="btn-whatsapp" href="https://api.whatsapp.com/message/57TSTYVN3SMGE1?autoload=1&amp;app_absent=0"><i class="fa-brands fa-whatsapp"></i>Chamar no WhatsApp</a>
   </div>
 </section>
