@@ -1,0 +1,804 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Desafios na Sala de Aula | Workshop Ser Hena</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Montserrat:wght@600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<style>
+  :root{
+    --purple:#603281;
+    --purple-light:#9847D1;
+    --teal:#4384A3;
+    --teal-dark:#4E8098;
+    --green:#148531;
+    --green-light:#00BB13;
+    --cta:#00D51D;
+    --cta-hover:#00b81a;
+    --price:#06C000;
+    --orange:#f1893b;
+    --orange2:#F68A3B;
+    --bg-light:#F5F5F5;
+    --dark:#383838;
+    --text-dark:#1D1D1D;
+    --text-body:#292929;
+    --red:#F72A2A;
+    --yellow:#f9da1d;
+  }
+  *{box-sizing:border-box;}
+  html,body{overflow-x:hidden;margin:0;padding:0;}
+  body{
+    font-family:'Poppins',sans-serif;
+    color:var(--text-dark);
+    background:#fff;
+    line-height:1.35;
+  }
+  p{margin:0 0 .6em;}
+  img{max-width:100%;display:block;}
+  h1,h2,h3{margin:0;font-family:'Poppins',sans-serif;}
+  .container{max-width:840px;margin:0 auto;padding:0 16px;}
+  .container-narrow{max-width:800px;margin:0 auto;padding:0 16px;}
+  .container-wide{max-width:961px;margin:0 auto;padding:0 16px;}
+
+  section{position:relative;}
+  .bg-purple{background:var(--purple);}
+  .bg-light{background:var(--bg-light);}
+  .bg-teal{background:var(--teal);}
+  .bg-dark{background:var(--dark);}
+  .py-lg{padding:56px 0;}
+  .py-md{padding:40px 0;}
+  .py-sm{padding:24px 0;}
+
+  .text-center{text-align:center;}
+  .white{color:#fff;}
+  .purple-text{color:var(--purple);}
+  .orange-text{color:var(--orange);}
+
+  .heading-lg{font-size:32px;font-weight:700;line-height:1.15;margin-bottom:6px;}
+  .heading-md{font-size:26px;font-weight:700;line-height:1.2;}
+  .badge-text{font-size:20px;font-weight:700;}
+
+  /* shape dividers */
+  .shape-divider{position:absolute;left:0;bottom:100%;width:100%;overflow:hidden;line-height:0;pointer-events:none;}
+  .shape-divider svg{width:100%;display:block;}
+  .shape-divider.curve svg{height:20px;}
+  .shape-divider.wave svg{height:32px;}
+  @media(max-width:640px){
+    .shape-divider.curve svg{height:12px;}
+    .shape-divider.wave svg{height:18px;}
+  }
+
+  /* Hero */
+  .hero{max-width:800px;margin:0 auto;padding:14px 10px 30px;}
+  .hero-badge{
+    background:var(--green);
+    color:#fff;
+    text-align:center;
+    font-weight:600;
+    font-size:21px;
+    padding:14px 16px;
+    border-radius:12px;
+    margin-bottom:14px;
+  }
+  .hero-headline{
+    color:var(--purple-light);
+    text-align:center;
+    font-weight:800;
+    text-transform:uppercase;
+    font-size:24px;
+    line-height:1.2;
+    margin-bottom:16px;
+  }
+  .hero-headline span.hl{color:#ff0000;}
+  .hero-headline span.ul{text-decoration:underline;}
+  .video-wrap{position:relative;width:100%;padding-top:56.25%;background:#000;border-radius:8px;overflow:hidden;margin-bottom:16px;}
+  .video-wrap vturb-smartplayer{position:absolute;inset:0;display:block;width:100%;height:100%;}
+  .hero-sub{
+    text-align:center;
+    font-weight:700;
+    font-size:18px;
+    color:var(--text-dark);
+  }
+  .hero-sub span.ul{text-decoration:underline;}
+
+  /* pain/solution section */
+  .pain-icon{width:150px;margin:0 auto 12px;}
+  @media(max-width:640px){ .pain-icon{width:130px;} }
+  .pain-title{color:#fff;font-weight:700;font-style:italic;font-size:20px;text-align:center;margin-bottom:10px;}
+  .pain-orange{color:var(--orange);font-weight:700;font-size:28px;text-align:center;margin-bottom:18px;}
+  .pain-text{color:#fff;text-align:center;font-size:16px;margin-bottom:30px;}
+  .pain-text u{text-decoration:underline;}
+
+  /* checklists */
+  .checklist{list-style:none;margin:0 0 16px;padding:0;}
+  .checklist li{display:flex;align-items:flex-start;gap:10px;padding:6px 4px;font-size:15px;text-align:left;}
+  .checklist.center li{justify-content:center;text-align:left;}
+  .checklist i{margin-top:3px;flex-shrink:0;}
+  .checklist.purple i{color:var(--purple);}
+  .checklist.green i{color:#00B324;}
+  .checklist.white{color:#fff;}
+  .checklist.white i{color:var(--green-light);}
+  .checklist.card i{color:var(--purple);font-size:14px;}
+  .checklist.card li{font-size:14px;padding:5px 2px;}
+
+  .mockup-img{max-width:460px;margin:-30px auto 14px;}
+
+  /* 4-col feature grid */
+  .grid-2x2{display:flex;flex-wrap:wrap;background:var(--bg-light);}
+  .grid-2x2 .feat{width:50%;padding:20px 16px;text-align:center;}
+  .grid-2x2 .feat img{width:44%;margin:0 auto 6px;}
+  .grid-2x2 .feat h3{color:var(--purple);font-weight:700;font-size:20px;margin-bottom:8px;}
+  .grid-2x2 .feat p{font-size:15px;color:var(--text-body);}
+
+  /* testimonial carousel */
+  .carousel{position:relative;max-width:520px;margin:0 auto;padding:30px 0;}
+  .carousel-track{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:0;border-radius:10px;-webkit-overflow-scrolling:touch;scrollbar-width:none;}
+  .carousel-track::-webkit-scrollbar{display:none;}
+  .carousel-track img{flex:0 0 100%;scroll-snap-align:center;border-radius:10px;}
+  .carousel-btn{
+    position:absolute;top:50%;transform:translateY(-50%);
+    background:rgba(255,255,255,.9);border:none;width:38px;height:38px;border-radius:50%;
+    cursor:pointer;font-size:16px;color:var(--purple);z-index:2;
+    display:flex;align-items:center;justify-content:center;
+  }
+  .carousel-btn.prev{left:-6px;}
+  .carousel-btn.next{right:-6px;}
+  .carousel-dots{display:flex;justify-content:center;gap:6px;margin-top:12px;}
+  .carousel-dots span{width:8px;height:8px;border-radius:50%;background:#ffffff80;cursor:pointer;}
+  .carousel-dots span.active{background:#fff;}
+
+  /* module cards grid */
+  .modules-grid{display:flex;flex-wrap:wrap;gap:0;background:var(--bg-light);}
+  .module-card{
+    width:50%;padding:10px;
+  }
+  .module-card-inner{
+    border:1px solid var(--purple);border-radius:10px;padding:16px 14px 20px;height:100%;text-align:center;
+    background:#fff;
+  }
+  .module-card-inner img{border-radius:10px 10px 0 0;margin:-16px -14px 10px;width:calc(100% + 28px);max-width:none;}
+  .module-card-inner h3{font-family:'Montserrat',sans-serif;color:var(--purple);font-weight:700;font-size:22px;margin-bottom:10px;}
+
+  /* certificate section */
+  .cert-img{max-width:640px;margin:10px auto -20px;}
+
+  /* helena bio */
+  .helena-row{display:flex;flex-wrap:wrap;align-items:center;gap:24px;padding:20px 16px 0;}
+  .helena-photo{flex:0 0 260px;max-width:260px;margin:0 auto;}
+  .helena-photo img{border-radius:21px;}
+  .helena-content{flex:1;min-width:260px;}
+  .helena-content h2{font-size:28px;font-weight:700;color:#fff;margin-bottom:10px;}
+  .helena-content p{color:#fff;font-size:16px;}
+  .helena-limits-img{max-width:340px;margin:10px auto 0;}
+
+  /* guarantee */
+  .shield-img{max-width:120px;margin:0 auto 10px;}
+
+  /* vagas limitadas */
+  .vagas-badge{
+    display:inline-block;background:var(--yellow);color:var(--text-dark);
+    font-weight:700;font-size:22px;padding:10px 22px;border-radius:8px;margin-bottom:16px;
+  }
+  .vagas-img{max-width:220px;margin:0 auto 12px;}
+  .vagas-text{font-size:16px;text-align:center;}
+  .vagas-text span{color:red;font-weight:700;}
+
+  /* pricing box */
+  .price-box{
+    max-width:961px;margin:0 auto;background:var(--bg-light);
+    border:5px solid #fff;border-radius:10px;padding:0 16px 32px;text-align:center;
+  }
+  .price-box-badge{
+    background:var(--red);color:#fff;font-weight:700;font-size:26px;
+    padding:16px;margin:0 -16px 16px;border-radius:5px 5px 0 0;
+  }
+  .price-mockup{max-width:340px;margin:0 auto 10px;}
+  .price-old{
+    text-decoration:line-through;color:#353535;font-weight:700;font-size:22px;margin-top:14px;
+  }
+  .price-by{color:#353535;font-size:19px;margin-top:2px;}
+  .price-big{color:var(--price);font-weight:700;font-size:54px;margin:2px 0;}
+  .price-cash{color:#353535;font-size:19px;margin-bottom:8px;}
+  .price-cta-note{color:#353535;font-weight:700;font-size:17px;margin-bottom:14px;}
+  .pay-methods-img{max-width:400px;margin:16px auto 0;}
+
+  /* buttons */
+  .btn-cta{
+    display:inline-block;background:var(--cta);color:#fff;font-weight:700;
+    font-size:18px;padding:16px 28px;border-radius:8px;text-decoration:none;
+    text-align:center;box-shadow:0 6px 0 #009e12;transition:transform .15s ease;
+    max-width:420px;width:100%;
+  }
+  .btn-cta:hover{background:var(--cta-hover);}
+  .btn-cta:active{transform:translateY(3px);box-shadow:0 3px 0 #009e12;}
+  .btn-wrap{text-align:center;margin:18px 0;}
+
+  .btn-whatsapp{
+    display:inline-flex;align-items:center;gap:10px;background:#12EE30;color:#0c3d13;
+    font-weight:700;font-size:17px;padding:14px 26px;border-radius:8px;text-decoration:none;
+  }
+
+  /* mid CTA sections */
+  .cta-row{display:flex;flex-wrap:wrap;align-items:center;gap:20px;padding:0 16px;}
+  .cta-row .col{flex:1;min-width:260px;max-width:400px;margin:0 auto;}
+  .cta-row h2{color:#fff;font-size:26px;font-weight:700;margin-bottom:12px;}
+  .cta-row p{color:#fff;font-size:15px;}
+  .cta-row img{border-radius:21px;margin-bottom:14px;}
+
+  /* faq */
+  .faq-title{color:#fff;font-weight:800;text-transform:uppercase;font-size:30px;text-align:center;margin-bottom:20px;letter-spacing:.5px;}
+  .faq-item{border-top:3px solid var(--orange);}
+  .faq-item:first-child{border-top:none;}
+  .faq-q{
+    width:100%;background:none;border:none;text-align:left;color:var(--orange);
+    font-weight:800;text-transform:uppercase;font-size:16px;padding:20px 30px 20px 0;
+    position:relative;cursor:pointer;font-family:'Poppins',sans-serif;
+  }
+  .faq-q i{position:absolute;right:0;top:50%;transform:translateY(-50%);}
+  .faq-a{max-height:0;overflow:hidden;transition:max-height .25s ease;}
+  .faq-a-inner{color:#CFCFCF;font-size:16px;padding-bottom:20px;line-height:1.3;}
+  .faq-item.open .faq-a{max-height:400px;}
+
+  /* footer */
+  .footer{padding:24px 16px;text-align:center;font-size:14px;color:#666;}
+
+  /* generic image widths seen in JSON */
+  .w-icon{max-width:100px;margin:0 auto;}
+  .w-professor{max-width:420px;margin:10px auto;}
+  .w-graph{max-width:520px;margin:20px auto;}
+
+  @media(min-width:640px){
+    .hero-badge{font-size:26px;}
+    .hero-headline{font-size:30px;}
+    .hero-sub{font-size:21px;}
+    .heading-lg{font-size:32px;}
+    .price-big{font-size:66px;}
+  }
+
+  @media(max-width:640px){
+    .grid-2x2 .feat{width:100%;}
+    .module-card{width:100%;}
+    .helena-row{flex-direction:column;text-align:center;}
+    .cta-row{flex-direction:column;}
+    .price-box-badge{font-size:22px;}
+  }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="hero-badge">Professores de turmas de 4 a 12 anos:</div>
+  <div class="hero-headline">
+    <span class="hl">Use o &ldquo;Circuito da Calma&rdquo;</span> <span class="ul">e faça sua turma cooperar</span> (sem gritos, ameaças ou castigos)
+  </div>
+  <div class="video-wrap">
+    <vturb-smartplayer id="vid-6a8cfce794011641887174b0" style="position:absolute;inset:0;width:100%;height:100%;"></vturb-smartplayer>
+  </div>
+  <p class="hero-sub">3 mil professores estão usando <span class="ul">frases prontas, gatilhos de atenção e uma rotina</span> que acalma até os grupos mais difíceis&nbsp; (sem depender da coordenação, nem perder sua autoridade)</p>
+</header>
+
+<!-- PAIN / SOLUTION -->
+<section class="bg-purple py-lg">
+  <div class="container">
+    <p class="pain-orange">O conteúdo mais direto e poderoso já criado para professores de turmas desafiadoras</p>
+    <img class="pain-icon" src="https://serhenaeducacao.com/wp-content/uploads/2025/02/AnyConv.com__Icone1-1.webp" alt="">
+    <p class="pain-title">Tem hora que parece que a sala vai desabar... e ninguém te ensinou o que fazer</p>
+    <p class="pain-text">Choro, gritos, desobediência.<br><strong>Você tenta manter a calma, mas por dentro está explodindo.</strong><br>No fim do dia, vai embora com culpa… achando que falhou.<br>E o pior: ninguém vê esse esforço. <u>E você tem vergonha até de contar o que acontece</u></p>
+    <img class="pain-icon" src="https://serhenaeducacao.com/wp-content/uploads/2025/02/AnyConv.com__Icone2-1.webp" alt="">
+    <p class="pain-title">Existe um jeito de ser firme sem gritar... e ser respeitada sem se impor</p>
+    <p class="pain-text" style="margin-bottom:0;">Não precisa mais se desgastar tentando controlar tudo.<br><strong>Com a abordagem certa, os alunos escutam na primeira vez.</strong><br>Você coloca limites com afeto, e a sala responde.<br><u>É isso que você vai aprender no Workshop: respeito sem briga, rotina com leveza</u></p>
+  </div>
+</section>
+
+<!-- TRANSFORME -->
+<section class="bg-light py-lg" style="padding-top:48px;">
+  <div class="shape-divider curve"><svg viewBox="0 0 500 40" preserveAspectRatio="none"><path d="M0,40 C125,0 375,0 500,40 L500,40 L0,40 Z" fill="var(--purple)"></path></svg></div>
+  <div class="container text-center">
+    <h2 class="heading-lg purple-text">Transforme sua forma de ensinar em poucos dias!</h2>
+    <ul class="checklist purple center" style="display:inline-block;text-align:left;margin-top:14px;">
+      <li><i class="fa-solid fa-circle-check"></i>Foco em turmas de 4 a 12 anos e atípicos. Mas os fundamentos servem para todas as idades</li>
+      <li><i class="fa-solid fa-circle-check"></i>Exclusivo para professores em sala de aula (não é para educadores parentais)</li>
+    </ul>
+
+    <h2 class="heading-lg purple-text" style="margin-top:20px;">Você vai aprender a aplicar o &ldquo;Circuito da Calma&rdquo; do Método SER</h2>
+    <img class="mockup-img" src="https://serhenaeducacao.com/wp-content/uploads/2025/07/Mockups-Workshop-pv1.webp" alt="Mockup do Workshop">
+    <p style="font-size:16px;color:var(--text-body);max-width:640px;margin:0 auto 14px;">Um conjunto de frases, atitudes e rotinas testadas em mais de <u>3.000 professores</u> para fazer os alunos cooperarem naturalmente <strong>(mesmo nas turmas mais desafiadoras da Educação Infantil e do Ensino Fundamental).</strong></p>
+    <ul class="checklist green center" style="display:inline-block;text-align:left;">
+      <li><i class="fa-solid fa-circle-check"></i>Serve para qualquer idade e experiência</li>
+      <li><i class="fa-solid fa-circle-check"></i>Tudo já mastigado: é só seguir e aplicar</li>
+      <li><i class="fa-solid fa-circle-check"></i>Acesso Vitalício e Imediato</li>
+    </ul>
+  </div>
+</section>
+
+<!-- 4 FEATURE GRID -->
+<div class="grid-2x2">
+  <div class="feat">
+    <img src="https://serhenaeducacao.com/wp-content/uploads/2025/02/AnyConv.com__Atividades-1.webp" alt="">
+    <h3>Atividades práticas e jogos educacionais</h3>
+    <p>Você terá acesso a uma variedade de atividades práticas e jogos educacionais que deixarão suas aulas mais dinâmicas e empolgantes para seus alunos.</p>
+  </div>
+  <div class="feat">
+    <img src="https://serhenaeducacao.com/wp-content/uploads/2025/02/AnyConv.com__Atividades1-1.webp" alt="">
+    <h3>Reduza seu estresse e recupere sua energia!</h3>
+    <p>Descubra métodos simples e eficazes para gerenciar o estresse e cuidar melhor de si mesmo, para que você possa enfrentar cada dia de trabalho com mais equilíbrio e tranquilidade.</p>
+  </div>
+  <div class="feat">
+    <img src="https://serhenaeducacao.com/wp-content/uploads/2025/02/AnyConv.com__Atividades2-1.webp" alt="">
+    <h3>Adaptação do ensino para diferentes estilos de aprendizagem</h3>
+    <p>Aprenda a personalizar seu ensino para atender às necessidades individuais de cada aluno, garantindo que todos tenham a oportunidade de alcançar seu máximo potencial.</p>
+  </div>
+  <div class="feat">
+    <img src="https://serhenaeducacao.com/wp-content/uploads/2025/02/AnyConv.com__Atividades3-1.webp" alt="">
+    <h3>Alcance o reconhecimento que você merece e conquiste um salário mais alto!</h3>
+    <p>Desenvolva suas habilidades de liderança e destaque-se como educador, abrindo portas para promoções e aumentos salariais que refletem seu valor e dedicação na profissão.</p>
+  </div>
+</div>
+
+<!-- TESTIMONIALS -->
+<section class="bg-purple py-lg" style="padding-top:70px;">
+  <div class="shape-divider curve"><svg viewBox="0 0 500 40" preserveAspectRatio="none"><path d="M0,0 C125,40 375,40 500,0 L500,40 L0,40 Z" fill="var(--bg-light)"></path></svg></div>
+  <div class="container text-center">
+    <h2 class="heading-lg white" style="margin-bottom:0;">Comentários reais de Professores e Educadores</h2>
+  </div>
+  <div class="carousel">
+    <button class="carousel-btn prev" onclick="moveCarousel(-1)" aria-label="Anterior"><i class="fa-solid fa-chevron-left"></i></button>
+    <div class="carousel-track" id="carouselTrack">
+      <img src="https://serhenaeducacao.com/wp-content/uploads/2025/04/Dp-04.webp" alt="Depoimento">
+      <img src="https://serhenaeducacao.com/wp-content/uploads/2025/04/Depoimento-01.webp" alt="Depoimento">
+      <img src="https://serhenaeducacao.com/wp-content/uploads/2025/04/Depoimento-02.webp" alt="Depoimento">
+      <img src="https://serhenaeducacao.com/wp-content/uploads/2025/02/AnyConv.com__3-5-1.webp" alt="Depoimento">
+      <img src="https://serhenaeducacao.com/wp-content/uploads/2025/02/AnyConv.com__1-4-1.webp" alt="Depoimento">
+      <img src="https://serhenaeducacao.com/wp-content/uploads/2025/02/AnyConv.com__2-6-1.webp" alt="Depoimento">
+    </div>
+    <button class="carousel-btn next" onclick="moveCarousel(1)" aria-label="Próximo"><i class="fa-solid fa-chevron-right"></i></button>
+    <div class="carousel-dots" id="carouselDots"></div>
+  </div>
+</section>
+
+<!-- O QUE VOCÊ VAI RECEBER -->
+<section class="bg-light py-lg" style="padding-top:48px;">
+  <div class="shape-divider curve"><svg viewBox="0 0 500 40" preserveAspectRatio="none"><path d="M0,40 C125,0 375,0 500,40 L500,40 L0,40 Z" fill="var(--purple)"></path></svg></div>
+  <div class="container text-center" style="margin-bottom:20px;">
+    <h2 class="heading-lg purple-text">Veja o que você vai receber:</h2>
+    <p style="font-weight:700;color:#4E4E4E;font-size:18px;"><u><strong>Mais de 90 AULAS</strong></u><br>E mais de 13 arquivos digitais para te ajudar na sala de aula</p>
+  </div>
+
+  <div class="modules-grid container">
+    <div class="module-card">
+      <div class="module-card-inner">
+        <img src="https://serhenaeducacao.com/wp-content/uploads/2025/04/Design-sem-nome-14-1-1.webp" alt="">
+        <h3>Trauma na Sala de Aula</h3>
+        <ul class="checklist card">
+          <li><i class="fa-solid fa-circle-check"></i>Motivadores do Comportamento</li>
+          <li><i class="fa-solid fa-circle-check"></i>O que é Trauma</li>
+          <li><i class="fa-solid fa-circle-check"></i>Tipos de Trauma</li>
+          <li><i class="fa-solid fa-circle-check"></i>Os "Mapas"</li>
+          <li><i class="fa-solid fa-circle-check"></i>Respostas ao Estresse</li>
+          <li><i class="fa-solid fa-circle-check"></i>Entendendo a Tolerância</li>
+          <li><i class="fa-solid fa-circle-check"></i>Compreendendo o Passado</li>
+          <li><i class="fa-solid fa-circle-check"></i>Na Prática</li>
+        </ul>
+      </div>
+    </div>
+    <div class="module-card">
+      <div class="module-card-inner">
+        <img src="https://serhenaeducacao.com/wp-content/uploads/2025/04/Design-sem-nome-1-3.webp" alt="">
+        <h3>Sala de Aula Preparada</h3>
+        <ul class="checklist card">
+          <li><i class="fa-solid fa-circle-check"></i>Segurança de Previsibilidade</li>
+          <li><i class="fa-solid fa-circle-check"></i>Processamento Sensorial</li>
+          <li><i class="fa-solid fa-circle-check"></i>Criando sua Sala Precisa</li>
+          <li><i class="fa-solid fa-circle-check"></i>O Canto da Calma</li>
+          <li><i class="fa-solid fa-circle-check"></i>Como Utilizar o Visual</li>
+          <li><i class="fa-solid fa-circle-check"></i>A Melhor Rotina da Sala</li>
+          <li><i class="fa-solid fa-circle-check"></i>Instruções Efetivas</li>
+          <li><i class="fa-solid fa-circle-check"></i>Na Prática</li>
+        </ul>
+      </div>
+    </div>
+    <div class="module-card">
+      <div class="module-card-inner">
+        <img src="https://serhenaeducacao.com/wp-content/uploads/2025/04/Design-sem-nome-2-2.webp" alt="">
+        <h3>Lidando Com Os Alunos</h3>
+        <ul class="checklist card">
+          <li><i class="fa-solid fa-circle-check"></i>Administrando Energia e Emoções</li>
+          <li><i class="fa-solid fa-circle-check"></i>Regulação Emocional</li>
+          <li><i class="fa-solid fa-circle-check"></i>A Fase de Adaptação</li>
+          <li><i class="fa-solid fa-circle-check"></i>Co-regulação</li>
+          <li><i class="fa-solid fa-circle-check"></i>Mudando a Perspectiva</li>
+        </ul>
+      </div>
+    </div>
+    <div class="module-card">
+      <div class="module-card-inner">
+        <img src="https://serhenaeducacao.com/wp-content/uploads/2025/04/Design-sem-nome-3-1.webp" alt="">
+        <h3>Melhorando Sua Prática de Ensino</h3>
+        <ul class="checklist card">
+          <li><i class="fa-solid fa-circle-check"></i>Trocas Inteligentes</li>
+          <li><i class="fa-solid fa-circle-check"></i>A Observação</li>
+          <li><i class="fa-solid fa-circle-check"></i>Tenha Rituais</li>
+          <li><i class="fa-solid fa-circle-check"></i>Autonômia e Responsabilidade</li>
+          <li><i class="fa-solid fa-circle-check"></i>Atividades e Situações Divertidas</li>
+          <li><i class="fa-solid fa-circle-check"></i>Agradeça a Escuta</li>
+          <li><i class="fa-solid fa-circle-check"></i>Reforçando a Responsabilidade</li>
+        </ul>
+      </div>
+    </div>
+    <div class="module-card">
+      <div class="module-card-inner">
+        <img src="https://serhenaeducacao.com/wp-content/uploads/2025/04/Design-sem-nome-11.webp" alt="">
+        <h3>Alunos com Deficiência ou Atípicos</h3>
+        <ul class="checklist card">
+          <li><i class="fa-solid fa-circle-check"></i>Como lidar com Alunos Atípicos</li>
+          <li><i class="fa-solid fa-circle-check"></i>Como lidar com TDAH</li>
+          <li><i class="fa-solid fa-circle-check"></i>Como lidar com TOD</li>
+          <li><i class="fa-solid fa-circle-check"></i>Como lidar com AUTISMO</li>
+          <li><i class="fa-solid fa-circle-check"></i>Como lidar com Não Verbais</li>
+        </ul>
+      </div>
+    </div>
+    <div class="module-card">
+      <div class="module-card-inner">
+        <img src="https://serhenaeducacao.com/wp-content/uploads/2025/04/Design-sem-nome-10-3.webp" alt="">
+        <h3>Motivação e Engajamento</h3>
+        <ul class="checklist card">
+          <li><i class="fa-solid fa-circle-check"></i>Punir Não Motiva</li>
+          <li><i class="fa-solid fa-circle-check"></i>Recompensas, Pode?</li>
+          <li><i class="fa-solid fa-circle-check"></i>Consequências Naturais</li>
+          <li><i class="fa-solid fa-circle-check"></i>Cultivando Motivação</li>
+          <li><i class="fa-solid fa-circle-check"></i>Na Prática</li>
+        </ul>
+      </div>
+    </div>
+    <div class="module-card">
+      <div class="module-card-inner">
+        <img src="https://serhenaeducacao.com/wp-content/uploads/2025/04/Design-sem-nome-12-1.webp" alt="">
+        <h3>Aulas Na Prática</h3>
+        <ul class="checklist card">
+          <li><i class="fa-solid fa-circle-check"></i>Aulas Que Te Ajudam</li>
+          <li><i class="fa-solid fa-circle-check"></i>Equidade</li>
+          <li><i class="fa-solid fa-circle-check"></i>Inteligência Emocional</li>
+          <li><i class="fa-solid fa-circle-check"></i>Tudo Bem Cometer Erros</li>
+          <li><i class="fa-solid fa-circle-check"></i>Ninguém Faz Com Você</li>
+          <li><i class="fa-solid fa-circle-check"></i>Você Consegue Fazer Coisas Difíceis</li>
+          <li><i class="fa-solid fa-circle-check"></i>O Poder das Palavras</li>
+          <li><i class="fa-solid fa-circle-check"></i>Dinâmica da Folha</li>
+          <li><i class="fa-solid fa-circle-check"></i>E Se Todo Mundo Fizesse Isso?</li>
+        </ul>
+      </div>
+    </div>
+    <div class="module-card">
+      <div class="module-card-inner">
+        <img src="https://serhenaeducacao.com/wp-content/uploads/2025/04/Design-sem-nome-14-1.webp" alt="">
+        <h3>Aulas Extras</h3>
+        <ul class="checklist card">
+          <li><i class="fa-solid fa-circle-check"></i>Professor e Carreira</li>
+          <li><i class="fa-solid fa-circle-check"></i>Interações Com Os Alunos</li>
+          <li><i class="fa-solid fa-circle-check"></i>Comunicação Com a Família</li>
+          <li><i class="fa-solid fa-circle-check"></i>Sobre a Sala de Aula</li>
+          <li><i class="fa-solid fa-circle-check"></i>Sobre a Prática</li>
+          <li><i class="fa-solid fa-circle-check"></i>Recursos</li>
+        </ul>
+      </div>
+    </div>
+    <div class="module-card">
+      <div class="module-card-inner">
+        <img src="https://serhenaeducacao.com/wp-content/uploads/2025/04/Design-sem-nome-16.webp" alt="">
+        <h3>Bônus</h3>
+        <ul class="checklist card">
+          <li><i class="fa-brands fa-whatsapp"></i>Grupo VIP tira dúvidas e interação.</li>
+          <li><i class="fa-solid fa-circle-check"></i>Aula Resumo com Tópicos mais Importantes</li>
+          <li><i class="fa-solid fa-circle-check"></i>Comportamentos e Situações Difíceis</li>
+        </ul>
+      </div>
+    </div>
+    <div class="module-card">
+      <div class="module-card-inner">
+        <img src="https://serhenaeducacao.com/wp-content/uploads/2025/02/Apostila-workshop-1.webp" alt="" style="width:50%;max-width:none;margin:0 auto 10px;">
+        <h3>Recursos</h3>
+        <ul class="checklist card">
+          <li><i class="fa-solid fa-circle-check"></i>Apostila de todo o curso</li>
+          <li><i class="fa-solid fa-circle-check"></i>Recursos indicados durante o Workshop</li>
+          <li><i class="fa-solid fa-circle-check"></i>Bibliografias e Cursos</li>
+          <li><i class="fa-solid fa-circle-check"></i>Para você se motivar (aula)</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CERTIFICADO -->
+<section class="bg-purple py-lg">
+  <div class="shape-divider curve"><svg viewBox="0 0 500 40" preserveAspectRatio="none"><path d="M0,0 C125,40 375,40 500,0 L500,40 L0,40 Z" fill="var(--bg-light)"></path></svg></div>
+  <div class="container text-center">
+    <h2 class="heading-lg white">Certificado de 14 horas reconhecido nacionalmente!</h2>
+    <img class="cert-img" src="https://serhenaeducacao.com/wp-content/uploads/2025/02/certificado-workshop-1.webp" alt="Certificado">
+  </div>
+</section>
+
+<!-- HELENA -->
+<section class="bg-teal py-lg" style="padding-top:64px;">
+  <div class="shape-divider wave"><svg viewBox="0 0 500 40" preserveAspectRatio="none"><path d="M0,40 C100,10 150,30 250,18 C350,6 400,26 500,12 L500,40 L0,40 Z" fill="var(--purple)"></path></svg></div>
+  <div class="helena-row container">
+    <div class="helena-photo">
+      <img src="https://serhenaeducacao.com/wp-content/uploads/2025/04/Foto-Helena.webp" alt="Foto Helena">
+    </div>
+    <div class="helena-content">
+      <h2>Prazer, Hena!</h2>
+      <p>Professora e influenciadora digital apaixonada por compartilhar conhecimento com famílias no Brasil e ao redor do mundo.</p>
+      <p>Mestra em Neurociência Infantil pela Universidade de Oxford com vasta experiência em Educação da Primeira Infância, dedico-me a simplificar conceitos complexos para que possam ser aplicados no dia a dia das famílias.</p>
+      <p>Minha missão é ajudar pais e mães a entenderem as necessidades emocionais e comportamentais de seus filhos, guiando-os com empatia e respeito.</p>
+      <p>Já ajudei mais de 5 mil famílias a construir uma relação saudável e de respeito com seus filhos, e compartilho conteúdos diariamente no Instagram e TikTok.</p>
+      <img class="helena-limits-img" src="https://serhenaeducacao.com/wp-content/uploads/2025/04/Mockups-Limites4.webp" alt="">
+    </div>
+  </div>
+</section>
+
+<!-- GARANTIA -->
+<section class="bg-purple py-lg" style="padding-top:60px;">
+  <div class="shape-divider wave"><svg viewBox="0 0 500 40" preserveAspectRatio="none"><path d="M0,40 C100,10 150,30 250,18 C350,6 400,26 500,12 L500,40 L0,40 Z" fill="var(--teal-dark)"></path></svg></div>
+  <div class="container text-center">
+    <img class="shield-img" src="https://serhenaeducacao.com/wp-content/uploads/2025/02/AnyConv.com__shield-1.webp" alt="Garantia">
+    <h2 class="heading-lg white">Garantia Incondicional de 30 dias</h2>
+    <p class="white" style="max-width:600px;margin:10px auto 0;font-size:16px;">Caso você não goste do evento ou ache que não é para você, basta solicitar o reembolso com o suporte que vamos te enviar o procedimento necessário para devolução do seu dinheiro.<br><em><strong>Você não corre risco algum.</strong></em></p>
+  </div>
+</section>
+
+<!-- VAGAS LIMITADAS -->
+<section class="bg-light py-md text-center">
+  <div class="container">
+    <div class="vagas-badge">VAGAS LIMITADAS</div><br>
+    <img class="vagas-img" src="https://serhenaeducacao.com/wp-content/uploads/2025/07/5-1.webp" alt="">
+    <p class="vagas-text">Devido ao grupo do WhatsApp, as vagas são limitadas e devem encerrar <span id="data-hoje"></span>.</p>
+  </div>
+</section>
+<script>
+  const dataAtual = new Date();
+  const opcoes = { day: '2-digit', month: '2-digit', year: 'numeric' };
+  const elData = document.getElementById("data-hoje");
+  if (elData) elData.textContent = dataAtual.toLocaleDateString('pt-BR', opcoes);
+</script>
+
+<!-- ULTIMA CHANCE + PRICING #1 -->
+<section class="bg-purple py-lg" style="padding-top:40px;">
+  <div class="shape-divider wave"><svg viewBox="0 0 500 40" preserveAspectRatio="none"><path d="M0,40 C100,10 150,30 250,18 C350,6 400,26 500,12 L500,40 L0,40 Z" fill="var(--bg-light)"></path></svg></div>
+  <div class="container text-center">
+    <h2 class="heading-lg white" style="margin-bottom:20px;">Essa pode ser sua última chance</h2>
+
+    <div class="price-box">
+      <div class="price-box-badge">ÚLTIMAS 6 VAGAS</div>
+      <img class="price-mockup" src="https://serhenaeducacao.com/wp-content/uploads/2025/02/Mockups-Workshop-1.webp" alt="">
+      <ul class="checklist card" style="display:inline-block;text-align:left;max-width:520px;">
+        <li><i class="fa-solid fa-circle-check"></i>Módulo 01 - Trauma na sala de aula</li>
+        <li><i class="fa-solid fa-circle-check"></i>Módulo 02 - Sala de aula preparada para o aluno</li>
+        <li><i class="fa-solid fa-circle-check"></i>Módulo 03 - Lidando com os alunos</li>
+        <li><i class="fa-solid fa-circle-check"></i>Módulo 04 - Melhorando sua prática de ensino</li>
+        <li><i class="fa-solid fa-circle-check"></i>Módulo 05 - Alunos atípicos e alunos com deficiência</li>
+        <li><i class="fa-solid fa-circle-check"></i>Módulo 06 - Motivação e engajemento</li>
+        <li><i class="fa-solid fa-circle-check"></i>Módulo 07 - Aulas na prática</li>
+        <li><i class="fa-solid fa-circle-check"></i>Extra - Professor e carreira</li>
+        <li><i class="fa-solid fa-circle-check"></i>Extra - Interação com os alunos</li>
+        <li><i class="fa-solid fa-circle-check"></i>Extra - Comunicação com a família</li>
+        <li><i class="fa-solid fa-circle-check"></i>Extra - Plantão tira dúvidas</li>
+        <li><i class="fa-solid fa-circle-check"></i>Bibliografias</li>
+        <li><i class="fa-solid fa-book"></i>Apostilas de todo o curso</li>
+        <li><i class="fa-brands fa-whatsapp"></i>#Bonus 1: Grupo Vip de Professores no WhatsApp</li>
+        <li><i class="fa-solid fa-gift"></i>#Bonus 2: Aula de resumo dos tópicos mais importantes</li>
+        <li><i class="fa-solid fa-gift"></i>#Bonus 3: 11 Aulas de Como Lidar com Comportamentos Específicos</li>
+        <li><i class="fa-solid fa-shield-halved"></i>30 Dias de Garantia</li>
+        <li><i class="fa-solid fa-infinity"></i>Acesso Vitalício</li>
+      </ul>
+      <p class="price-old">De R$997,00</p>
+      <p class="price-by">Por 12x de</p>
+      <p class="price-big">R$30,72</p>
+      <p class="price-cash">Ou R$297,00 à vista</p>
+      <p class="price-cta-note">APERTE NO BOTÃO VERDE PARA TER ACESSO AGORA</p>
+      <div class="btn-wrap">
+        <a class="btn-cta" href="https://checkout.payt.com.br/10e9e8ecf127f740f1c2a99e3ef4433c">QUERO TER UMA SALA DE AULA SEM ESTRESSE</a>
+      </div>
+      <img class="pay-methods-img" src="https://serhenaeducacao.com/wp-content/uploads/2025/02/modo-de-pagamento-1-1.webp" alt="Formas de pagamento">
+    </div>
+  </div>
+</section>
+
+<!-- WHATSAPP SUPPORT -->
+<section class="bg-teal py-lg" style="padding-top:60px;">
+  <div class="shape-divider wave"><svg viewBox="0 0 500 40" preserveAspectRatio="none"><path d="M0,40 C100,10 150,30 250,18 C350,6 400,26 500,12 L500,40 L0,40 Z" fill="var(--purple)"></path></svg></div>
+  <div class="cta-row">
+    <div class="col text-center">
+      <img src="https://serhenaeducacao.com/wp-content/uploads/2025/07/Mockups-Workshop-pv3.webp" alt="">
+      <h2>Precisa de ajuda para acessar? A gente resolve com você, no WhatsApp</h2>
+      <p style="text-align:left;">Muitas professoras têm medo de comprar e não conseguir acessar sozinhas.<br><u><strong>Mas aqui, você não fica perdida.</strong></u></p>
+      <p style="text-align:left;">Assim que sua inscrição é confirmada, você pode entrar em contato com nossa equipe diretamente no WhatsApp para te ajudar com <strong>tudo o que precisar</strong> — do acesso às dúvidas sobre as aulas.</p>
+      <p style="text-align:left;"><strong>É só chamar. Estamos com você do início ao fim.</strong></p>
+      <div class="btn-wrap">
+        <a class="btn-cta" href="https://checkout.payt.com.br/10e9e8ecf127f740f1c2a99e3ef4433c">QUERO TER UMA SALA DE AULA SEM ESTRESSE</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVE PARA QUALQUER IDADE -->
+<section class="bg-light py-lg" style="padding-top:56px;">
+  <div class="shape-divider wave"><svg viewBox="0 0 500 40" preserveAspectRatio="none"><path d="M0,40 C100,10 150,30 250,18 C350,6 400,26 500,12 L500,40 L0,40 Z" fill="var(--teal)"></path></svg></div>
+  <div class="container text-center">
+    <h2 class="heading-lg orange-text">Serve para Qualquer Idade e Experiência</h2>
+    <img class="w-professor" src="https://serhenaeducacao.com/wp-content/uploads/2025/02/professor-1.webp" alt="">
+    <p style="font-size:16px;color:var(--text-body);max-width:640px;margin:0 auto;"><strong>Não importa se você é um professor novato ou veterano, ou se ensina crianças ou adultos.</strong> Este workshop foi projetado para funcionar em qualquer contexto educacional (vai funcionar melhor para a infância). Mas os fundamentos que você aprenderá são universais e se aplicam a todas as idades e níveis de experiência.</p>
+    <img class="w-graph" src="https://serhenaeducacao.com/wp-content/uploads/2025/02/grafico-professor-1.webp" alt="">
+    <p style="font-size:16px;color:var(--text-body);max-width:640px;margin:0 auto 18px;"><strong>Está preocupado se isso vai funcionar para você?</strong><br>Os resultados falam por si – professores de todos os tipos têm transformado suas salas de aula, reduzido o estresse e aumentado sua renda mensal. Esta é a oportunidade perfeita para ver mudanças reais e palpáveis em sua carreira.</p>
+    <div class="btn-wrap">
+      <a class="btn-cta" href="https://checkout.payt.com.br/10e9e8ecf127f740f1c2a99e3ef4433c">QUERO TER UMA SALA DE AULA SEM ESTRESSE</a>
+    </div>
+  </div>
+</section>
+
+<!-- GUIA DO PROFESSOR -->
+<section class="bg-purple py-lg" style="padding-top:44px;">
+  <div class="shape-divider wave"><svg viewBox="0 0 500 40" preserveAspectRatio="none"><path d="M0,40 C100,10 150,30 250,18 C350,6 400,26 500,12 L500,40 L0,40 Z" fill="#fff"></path></svg></div>
+  <div class="container text-center">
+    <h2 class="heading-lg white">O guia do professor para qualquer sala de aula</h2>
+    <img class="mockup-img" style="max-width:400px;" src="https://serhenaeducacao.com/wp-content/uploads/2025/07/Mockups-Workshop-pv2.webp" alt="">
+    <ul class="checklist white center" style="display:inline-block;text-align:left;">
+      <li><i class="fa-solid fa-circle-check"></i>Como fazer seus alunos te escutarem na primeira vez</li>
+      <li><i class="fa-solid fa-circle-check"></i>O que realmente causa a desobediência — e como resolver pela raiz</li>
+      <li><i class="fa-solid fa-circle-check"></i>Estratégias práticas para ter uma aula mais calma e engajada</li>
+      <li><i class="fa-solid fa-circle-check"></i>Como organizar sua rotina para ensinar com mais leveza</li>
+      <li><i class="fa-solid fa-circle-check"></i>Como se fazer respeitada naturalmente, mesmo sendo nova na escola</li>
+    </ul>
+    <div class="btn-wrap">
+      <a class="btn-cta" href="https://checkout.payt.com.br/10e9e8ecf127f740f1c2a99e3ef4433c">QUERO TER UMA SALA DE AULA SEM ESTRESSE</a>
+    </div>
+  </div>
+</section>
+
+<!-- ULTIMA CHANCE + PRICING #2 -->
+<section class="bg-purple py-lg">
+  <div class="container text-center">
+    <h2 class="heading-lg white" style="margin-bottom:20px;">Essa pode ser sua última chance</h2>
+
+    <div class="price-box">
+      <div class="price-box-badge">ÚLTIMAS 6 VAGAS</div>
+      <img class="price-mockup" src="https://serhenaeducacao.com/wp-content/uploads/2025/02/Mockups-Workshop-1.webp" alt="">
+      <ul class="checklist card" style="display:inline-block;text-align:left;max-width:520px;">
+        <li><i class="fa-solid fa-circle-check"></i>Módulo 01 - Trauma na sala de aula</li>
+        <li><i class="fa-solid fa-circle-check"></i>Módulo 02 - Sala de aula preparada para o aluno</li>
+        <li><i class="fa-solid fa-circle-check"></i>Módulo 03 - Lidando com os alunos</li>
+        <li><i class="fa-solid fa-circle-check"></i>Módulo 04 - Melhorando sua prática de ensino</li>
+        <li><i class="fa-solid fa-circle-check"></i>Módulo 05 - Alunos atípicos e alunos com deficiência</li>
+        <li><i class="fa-solid fa-circle-check"></i>Módulo 06 - Motivação e engajemento</li>
+        <li><i class="fa-solid fa-circle-check"></i>Módulo 07 - Aulas na prática</li>
+        <li><i class="fa-solid fa-circle-check"></i>Extra - Professor e carreira</li>
+        <li><i class="fa-solid fa-circle-check"></i>Extra - Interação com os alunos</li>
+        <li><i class="fa-solid fa-circle-check"></i>Extra - Comunicação com a família</li>
+        <li><i class="fa-solid fa-circle-check"></i>Extra - Plantão tira dúvidas</li>
+        <li><i class="fa-solid fa-circle-check"></i>Bibliografias</li>
+        <li><i class="fa-solid fa-book"></i>Apostilas de todo o curso</li>
+        <li><i class="fa-brands fa-whatsapp"></i>#Bonus 1: Grupo Vip de Professores no WhatsApp</li>
+        <li><i class="fa-solid fa-gift"></i>#Bonus 2: Aula de resumo dos tópicos mais importantes</li>
+        <li><i class="fa-solid fa-gift"></i>#Bonus 3: 11 Aulas de Como Lidar com Comportamentos Específicos</li>
+        <li><i class="fa-solid fa-shield-halved"></i>30 Dias de Garantia</li>
+        <li><i class="fa-solid fa-infinity"></i>Acesso Vitalício</li>
+      </ul>
+      <p class="price-old">De R$997,00</p>
+      <p class="price-by">Por 12x de</p>
+      <p class="price-big">R$30,72</p>
+      <p class="price-cash">Ou R$297,00 à vista</p>
+      <p class="price-cta-note">APERTE NO BOTÃO VERDE PARA TER ACESSO AGORA</p>
+      <div class="btn-wrap">
+        <a class="btn-cta" href="https://checkout.payt.com.br/10e9e8ecf127f740f1c2a99e3ef4433c">QUERO TER UMA SALA DE AULA SEM ESTRESSE</a>
+      </div>
+      <img class="pay-methods-img" src="https://serhenaeducacao.com/wp-content/uploads/2025/02/modo-de-pagamento-1-1.webp" alt="Formas de pagamento">
+    </div>
+  </div>
+</section>
+
+<!-- DUVIDAS / WHATSAPP -->
+<section class="bg-dark py-lg" style="padding-top:56px;">
+  <div class="shape-divider wave"><svg viewBox="0 0 500 40" preserveAspectRatio="none"><path d="M0,40 C100,10 150,30 250,18 C350,6 400,26 500,12 L500,40 L0,40 Z" fill="var(--purple)"></path></svg></div>
+  <div class="container text-center">
+    <h2 class="heading-lg orange-text">Ainda está com dúvidas?</h2>
+    <p style="color:var(--text-body);font-size:16px;margin-bottom:18px;">Converse com o suporte no WhatsApp!</p>
+    <a class="btn-whatsapp" href="https://api.whatsapp.com/message/57TSTYVN3SMGE1?autoload=1&amp;app_absent=0"><i class="fa-brands fa-whatsapp"></i>Chamar no WhatsApp</a>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="bg-purple py-lg">
+  <div class="container-narrow" style="max-width:820px;">
+    <h2 class="faq-title">Perguntas Frequentes</h2>
+    <div id="faqList">
+      <div class="faq-item open">
+        <button class="faq-q" onclick="toggleFaq(this)">Já tentei várias coisas, mas nada parece funcionar.<i class="fa-solid fa-minus"></i></button>
+        <div class="faq-a"><div class="faq-a-inner">Eu sei como pode ser frustrante quando você se esforça e não vê resultados. Nosso workshop oferece técnicas práticas e comprovadas que são fáceis de implementar e podem realmente fazer a diferença na sua sala de aula.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">Este workshop é adequado para professores de todos os níveis de experiência?<i class="fa-solid fa-plus"></i></button>
+        <div class="faq-a"><div class="faq-a-inner">Sim! Nosso workshop é projetado para atender às necessidades de professores de todos os níveis, desde iniciantes até profissionais experientes. Nossas estratégias podem ser adaptadas para se adequar à sua experiência e ao seu contexto educacional específico.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">Como faço para acessar o conteúdo do workshop?<i class="fa-solid fa-plus"></i></button>
+        <div class="faq-a"><div class="faq-a-inner">Após a inscrição, você receberá acesso instantâneo ao nosso portal online, onde encontrará todo o material do workshop, incluindo vídeos, recursos, atividades e materiais de suporte. Tudo pode ser acessado a qualquer momento e de qualquer lugar com uma conexão à internet.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">Não tenho certeza se isso é para mim.<i class="fa-solid fa-plus"></i></button>
+        <div class="faq-a"><div class="faq-a-inner">Eu entendo suas dúvidas. Mas nosso workshop é projetado para se adaptar às suas necessidades específicas como professor. Não importa o seu estilo de ensino ou experiência, há algo aqui para você. E se ainda não estiver convencido, estamos aqui para ajudá-lo a decidir.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">Qual é a política de reembolso?<i class="fa-solid fa-plus"></i></button>
+        <div class="faq-a"><div class="faq-a-inner">Por lei, você tem garantia de satisfação de 7 dias. Se, por qualquer motivo, você não estiver satisfeito com o workshop, basta entrar em contato conosco dentro desse período para obter um reembolso total, sem perguntas. Sua satisfação é nossa prioridade número um.</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <p>Ser Hena 2025 - Todos os direitos reservados</p>
+</footer>
+
+<script src="https://scripts.converteai.net/44a04a32-df90-4e75-8c2e-cb5f0854afa1/players/6a8cfce794011641887174b0/v4/player.js" async></script>
+
+<script>
+  // FAQ accordion
+  function toggleFaq(btn){
+    const item = btn.closest('.faq-item');
+    const isOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach(i=>{
+      i.classList.remove('open');
+      i.querySelector('.faq-q i').className='fa-solid fa-plus';
+      i.querySelector('.faq-a').style.maxHeight='0px';
+    });
+    if(!isOpen){
+      item.classList.add('open');
+      btn.querySelector('i').className='fa-solid fa-minus';
+      const a = item.querySelector('.faq-a');
+      a.style.maxHeight = a.scrollHeight+20+'px';
+    }
+  }
+  document.addEventListener('DOMContentLoaded',()=>{
+    document.querySelectorAll('.faq-item.open .faq-a').forEach(a=>{
+      a.style.maxHeight = a.scrollHeight+20+'px';
+    });
+  });
+
+  // Carousel
+  const track = document.getElementById('carouselTrack');
+  const dotsWrap = document.getElementById('carouselDots');
+  const slides = track ? track.children.length : 0;
+  let current = 0;
+  if(track){
+    for(let i=0;i<slides;i++){
+      const dot = document.createElement('span');
+      if(i===0) dot.classList.add('active');
+      dot.onclick = ()=>goToSlide(i);
+      dotsWrap.appendChild(dot);
+    }
+  }
+  function updateDots(){
+    [...dotsWrap.children].forEach((d,i)=>d.classList.toggle('active', i===current));
+  }
+  function goToSlide(i){
+    current = (i+slides)%slides;
+    track.scrollTo({left: track.clientWidth*current, behavior:'smooth'});
+    updateDots();
+  }
+  function moveCarousel(dir){ goToSlide(current+dir); }
+  if(track){
+    track.addEventListener('scroll', ()=>{
+      clearTimeout(track._t);
+      track._t = setTimeout(()=>{
+        current = Math.round(track.scrollLeft/track.clientWidth);
+        updateDots();
+      },100);
+    });
+  }
+</script>
+
+</body>
+</html>
