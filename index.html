@@ -131,7 +131,7 @@
   /* checklists */
   .checklist{list-style:none;margin:0 0 16px;padding:0;}
   .checklist li{display:flex;align-items:flex-start;gap:10px;padding:7px 4px;font-size:var(--fs-lead);text-align:left;}
-  .checklist.center li{justify-content:center;text-align:left;}
+  .checklist.center li{justify-content:flex-start;text-align:left;}
   .checklist i{margin-top:3px;flex-shrink:0;}
   .checklist.purple i{color:var(--purple);}
   .checklist.green i{color:#00B324;}
@@ -221,7 +221,7 @@
   .price-big{color:var(--price);font-weight:700;font-size:var(--fs-price);margin:2px 0;line-height:1.05;}
   .price-cash{color:#353535;font-size:var(--fs-lead);margin-bottom:8px;}
   .price-cta-note{color:#353535;font-weight:700;font-size:clamp(15px,2.4vw,18px);margin-bottom:14px;}
-  .pay-methods-img{max-width:400px;margin:16px auto 0;}
+  .pay-methods-img{width:100%;max-width:400px;margin:16px auto 0;}
 
   /* buttons */
   .btn-cta{
@@ -261,7 +261,12 @@
   .faq-item.open .faq-a{max-height:400px;}
 
   /* footer */
-  .footer{padding:24px 16px;text-align:center;font-size:var(--fs-xs);color:#666;}
+  .footer{padding:32px 16px 28px;text-align:center;font-size:var(--fs-xs);color:#777;background:#f7f7f7;border-top:1px solid #e5e5e5;}
+  .footer .footer-inner{max-width:680px;margin:0 auto;}
+  .footer p{margin:0 0 10px;line-height:1.5;}
+  .footer p:last-child{margin-bottom:0;}
+  .footer a{color:var(--purple);text-decoration:underline;}
+  .footer .footer-copy{color:#555;font-weight:600;margin-top:16px;}
 
   /* generic image widths seen in JSON */
   .w-icon{max-width:100px;margin:0 auto;}
@@ -749,7 +754,12 @@
 
 <!-- FOOTER -->
 <footer class="footer">
-  <p>Ser Hena 2025 - Todos os direitos reservados</p>
+  <div class="footer-inner">
+    <p>Este site não é afiliado ao Facebook/Meta ou ao Instagram. Após sair dessas plataformas, a responsabilidade pelo conteúdo não é delas, e sim do nosso site.</p>
+    <p>Os resultados apresentados nesta página não são garantia de resultados futuros. O aproveitamento do conteúdo do workshop depende do empenho de cada professor(a) na aplicação prática dos ensinamentos.</p>
+    <p>Dúvidas sobre sua compra ou acesso? <a href="https://api.whatsapp.com/message/57TSTYVN3SMGE1?autoload=1&amp;app_absent=0">Fale com o suporte no WhatsApp</a>.</p>
+    <p class="footer-copy">&copy; Ser Hena 2026 - Todos os direitos reservados</p>
+  </div>
 </footer>
 
 <script>
